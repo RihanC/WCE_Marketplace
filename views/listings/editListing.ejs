@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <link rel="stylesheet" href="/css/newListing.css" />
+
+  <div class="container mt-5">
+    <div class="card shadow-sm border-0 rounded-4 p-4">
+
+      <h3 class="mb-4 fw-semibold">Edit Listing</h3>
+
+      <form method="POST" action="/listings/<%= listing._id %>?_method=PATCH" class="listings needs-validation"
+        novalidate enctype="multipart/form-data">
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title</label>
+          <input name="listing[title]" type="text" class="form-control" value="<%= listing.title %>" required>
+          <div class="invalid-feedback">Please enter a Title</div>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea name="listing[description]" class="form-control" rows="3"
+            required><%= listing.description %></textarea>
+          <div class="invalid-feedback">Please enter a description</div>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Category</label>
+          <select name="listing[category]" class="form-select" required>
+            <option value="">Select Category</option>
+            <option value="Books" <%=listing.category==="Books" ?"selected":"" %>>Books</option>
+            <option value="Stationary" <%=listing.category==="Stationary" ?"selected":"" %>>Stationary</option>
+            <option value="Electronics" <%=listing.category==="Electronics" ?"selected":"" %>>Electronics</option>
+            <option value="Furniture" <%=listing.category==="Furniture" ?"selected":"" %>>Furniture</option>
+            <option value="Clothing" <%=listing.category==="Clothing" ?"selected":"" %>>Clothing</option>
+            <option value="Transport" <%=listing.category==="Transport" ?"selected":"" %>>Transport</option>
+            <option value="Others" <%=listing.category==="Others" ?"selected":"" %>>Others</option>
+          </select>
+        </div>
+
+        <!-- Current Image -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Current Image</label><br>
+          <img src="<%= listing.image.url %>" style="max-width: 200px; border-radius: 10px;">
+        </div>
+
+        <!-- New Image -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Upload New Image</label>
+          <input name="image" type="file" class="form-control">
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Price</label>
+          <input name="listing[price]" type="number" class="form-control" value="<%= listing.price %>" required>
+          <div class="invalid-feedback">Price should be valid</div>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="btn btn-danger w-100 mt-3">
+          Update Listing
+        </button>
+
+      </form>
+    </div>
+  </div>

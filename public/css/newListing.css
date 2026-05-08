@@ -1,0 +1,36 @@
+.card {
+  max-width: 700px; /* 🔥 adjust: 500–700px ideal */
+  margin: 0 auto; /* center it */
+}
+
+.btn-danger {
+  background-color: #ff3434 !important;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: #e83737 !important;
+}
+
+.signup {
+  margin-top: 20px; /* more breathing space */
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.signup a {
+  background-color: #ff3434 !important;
+  padding: 6px 12px; /* better spacing */
+  border-radius: 8px; /* softer corners */
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block; /* fixes spacing issues */
+  transition: all 0.25s ease;
+}
+
+.signup a:hover {
+  background-color: #e83737 !important;
+  transform: translateY(-2px); /* subtle lift effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* depth */
+}

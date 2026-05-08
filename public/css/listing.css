@@ -1,0 +1,209 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f7f7f7;
+  padding: 25px 15px; /* smaller */
+}
+
+/* Wrapper */
+.wholeListing {
+  gap: 15px;
+}
+
+/* Main Container */
+.listing {
+  padding: 20px; /* smaller */
+  max-width: 650px; /* reduced */
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* SAME */
+  transition: transform 0.3s ease;
+}
+
+.listing:hover {
+  transform: translateY(-5px); /* SAME */
+}
+
+/* Image */
+.listing img {
+  width: 80%;
+  height: 350px; /* reduced from 500 */
+
+  display: block;
+  margin: 15px auto;
+
+  border-radius: 12px;
+  border: 2px solid #ddd;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Hover effect (UNCHANGED) */
+.listing img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Content */
+.listing-content {
+  width: 92%;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+/* Title */
+.listing h3 {
+  font-size: 22px; /* reduced */
+  margin-bottom: 8px;
+  color: #222;
+}
+
+/* Description */
+.description {
+  font-size: 14px; /* smaller */
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Info */
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.info p {
+  font-size: 13px; /* smaller */
+  color: #444;
+}
+
+/* Price */
+.price span {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ff385c;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background-color: #25d366; /* WhatsApp green */
+  color: white;
+
+  padding: 8px 14px;
+  border-radius: 25px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Icon */
+.whatsapp-btn i {
+  font-size: 16px;
+}
+
+/* Hover */
+.whatsapp-btn:hover {
+  background-color: #1ebe5d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 15px 0;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  margin: 15px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #ff385c;
+  font-weight: bold;
+}
+
+/* Buttons container */
+.editDelete {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+}
+
+/* Common button */
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 6px 12px; /* smaller */
+  border-radius: 10px;
+  font-size: 13px; /* smaller */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.25s ease;
+}
+
+/* Edit */
+.edit-btn {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.edit-btn:hover {
+  background-color: #ffe69c;
+  transform: translateY(-2px); /* SAME */
+}
+
+/* Delete */
+.delete-btn {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+.delete-btn:hover {
+  background-color: #f1aeb5;
+  transform: translateY(-2px); /* SAME */
+}
+
+/* Map */
+#map {
+  height: 350px; /* reduced */
+  width: 100%;
+  margin: 15px auto;
+  border-radius: 12px;
+  border: 2px solid grey;
+}
+
+/* Map title */
+.map-title {
+  font-size: 16px; /* smaller */
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #222;
+}

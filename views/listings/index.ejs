@@ -1,0 +1,133 @@
+<% layout("/layouts/boilerplate.ejs") %>
+    <link rel="stylesheet" href="/css/index.css">
+
+    <div class="filters-bar container-fluid">
+
+        <!-- 🔥 LEFT: FILTERS -->
+        <div class="filters-left">
+            <div class="row justify-content-center m-0">
+
+                <!-- IMPORTANT: remove href and use data-category -->
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="All">
+                        <i class="fa-solid fa-border-all"></i>
+                        <p>All</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Books">
+                        <i class="fa-solid fa-book"></i>
+                        <p>Books</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Stationary">
+                        <i class="fa-solid fa-pen"></i>
+                        <p>Stationary</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Electronics">
+                        <i class="fa-solid fa-laptop"></i>
+                        <p>Electronics</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Furniture">
+                        <i class="fa-solid fa-couch"></i>
+                        <p>Furniture</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Clothing">
+                        <i class="fa-solid fa-shirt"></i>
+                        <p>Clothing</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Transport">
+                        <i class="fa-solid fa-bicycle"></i>
+                        <p>Transport</p>
+                    </a>
+                </div>
+
+                <div class="col text-center">
+                    <a href="#" class="filter-item" data-category="Others">
+                        <i class="fa-solid fa-ellipsis"></i>
+                        <p>Others</p>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 🔥 RIGHT: SORT -->
+        <form method="GET" action="/listings">
+
+            <% if(category){ %>
+                <input type="hidden" name="category" value="<%= category %>">
+                <% } %>
+
+                    <% if(search){ %>
+                        <input type="hidden" name="search" value="<%= search %>">
+                        <% } %>
+
+                            <select name="sort" class="form-select" onchange="this.form.submit()">
+                                <option value="">Sort By</option>
+                                <option value="latest" <%=sort==="latest" ? "selected" : "" %>>Latest</option>
+                                <option value="priceLow" <%=sort==="priceLow" ? "selected" : "" %>>Price: Low → High
+                                </option>
+                                <option value="priceHigh" <%=sort==="priceHigh" ? "selected" : "" %>>Price: High → Low
+                                </option>
+                            </select>
+
+        </form>
+
+    </div>
+
+    <br>
+
+    <!-- LISTINGS -->
+    <div class="Outer">
+        <div class="OuterListing">
+
+            <% if(listings.length===0){ %>
+                <p>No Listings Found</p>
+                <% } %>
+
+                    <% for(let listing of listings){ %>
+                        <a href="/listings/<%= listing._id %>">
+                            <div class="listing">
+
+                                <div class="image-container">
+                                    <img src="<%= listing.image.url %>">
+                                </div>
+
+                                <h3>
+                                    <%= listing.title %>
+                                </h3>
+
+                                <p class="price">
+                                    ₹ <%= listing.price.toLocaleString("en-IN") %>
+                                </p>
+
+                                <p>
+                                    <strong>Category:</strong>
+                                    <%= listing.category %>
+                                </p>
+
+                            </div>
+                        </a>
+                        <% } %>
+
+        </div>
+    </div>
+
+    <!-- 🔥 FIXED SCRIPT -->

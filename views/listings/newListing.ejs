@@ -1,0 +1,70 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+  <link rel="stylesheet" href="/css/newListing.css" />
+
+  <div class="container mt-5">
+    <div class="card shadow border-0 rounded-4 p-4">
+
+      <h3 class="mb-4 fw-semibold">Add New Listing</h3>
+
+      <form action="/listings" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title</label>
+          <input name="listing[title]" type="text" class="form-control" placeholder="Enter item name" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea name="listing[description]" class="form-control" rows="3" placeholder="Enter item description"
+            required></textarea>
+        </div>
+
+        <!-- Image -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Upload Image</label>
+          <input name="image" type="file" class="form-control" required>
+        </div>
+
+        <!-- Price + Category -->
+        <div class="row">
+
+          <!-- Price -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">Price (₹)</label>
+            <input name="listing[price]" type="number" class="form-control" placeholder="Enter price" required>
+          </div>
+
+          <!-- Category -->
+          <div class="col-md-6 mb-3">
+            <label class="form-label fw-semibold">Category</label>
+            <select name="listing[category]" class="form-select" required>
+              <option value="">Select Category</option>
+              <option value="Books">📚 Books</option>
+              <option value="Stationary">✏️ Stationary</option>
+              <option value="Electronics">💻 Electronics</option>
+              <option value="Furniture">🪑 Furniture</option>
+              <option value="Clothing">👕 Clothing</option>
+              <option value="Transport">🚲 Transport</option>
+              <option value="Others">📦 Others</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Seller Info (auto from logged-in user) -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Contact Number</label>
+          <input type="text" class="form-control" value="<%= currUser.phone %>" readonly>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-danger w-100 mt-3">
+          Add Listing
+        </button>
+
+      </form>
+    </div>
+  </div>

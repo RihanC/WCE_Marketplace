@@ -1,0 +1,76 @@
+<% layout("/layouts/boilerplate.ejs") %>
+    <link rel="stylesheet" href="/css/myListings.css">
+
+    <div class="container mt-4">
+
+        <!-- HEADER -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="fw-semibold">My Listings</h3>
+            <a href="/listings/new" class="btn btn-danger">+ Add New</a>
+        </div>
+
+        <!-- LISTINGS GRID -->
+        <div class="Outer">
+            <div class="OuterListing">
+
+                <% if(listings.length===0){ %>
+                    <div class="text-center w-100 py-5">
+                        <h5>No Listings Yet</h5>
+                        <p class="text-muted">Start by adding your first item 🚀</p>
+                    </div>
+                    <% } %>
+
+                        <% for(let listing of listings){ %>
+
+                            <div class="listing">
+
+                                <!-- CLICKABLE AREA -->
+                                <a href="/listings/<%= listing._id %>">
+
+                                    <div class="image-container">
+                                        <img src="<%= listing.image.url %>" alt="listing image">
+                                    </div>
+
+                                    <div class="px-2 pb-2">
+                                        <h3>
+                                            <%= listing.title %>
+                                        </h3>
+
+                                        <p class="price">
+                                            ₹ <%= listing.price.toLocaleString("en-IN") %>
+                                        </p>
+
+                                        <p>
+                                            <strong>Category:</strong>
+                                            <%= listing.category %>
+                                        </p>
+                                    </div>
+
+                                </a>
+
+                                <!-- 🔥 ACTION BUTTONS -->
+                                <div class="action-buttons">
+
+                                    <form method="GET" action="/listings/<%= listing._id %>/edit">
+                                        <button class="edit-btn">
+                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                                        </button>
+                                    </form>
+
+                                    <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE"
+                                        onsubmit="return confirm('Do you want to delete?');">
+                                        <button class="delete-btn">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+                            <% } %>
+
+            </div>
+        </div>
+
+    </div>

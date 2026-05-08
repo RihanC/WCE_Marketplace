@@ -1,0 +1,93 @@
+<% layout("/layouts/boilerplate.ejs") %>
+  <link rel="stylesheet" href="/css/listing.css" />
+
+  <a href="/listings" class="back-btn">← Back</a>
+
+  <div class="wholeListing">
+
+    <div class="listing">
+
+      <!-- Owner -->
+      <p class="owner">
+        <i class="fa-solid fa-user"></i>
+        <span>
+          <%= listing.owner.username %>
+        </span>
+      </p>
+
+      <!-- Image -->
+      <img src="<%= listing.image.url %>" />
+
+      <div class="listing-content">
+
+        <!-- Title -->
+        <h3>
+          <%= listing.title %>
+        </h3>
+
+        <!-- Description -->
+        <p class="description">
+          <%= listing.description %>
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- Category -->
+        <div class="category-badge">
+          <i class="fa-solid fa-tag"></i>
+          <strong>Category: </strong>
+          <span>
+            <%= listing.category %>
+          </span>
+        </div>
+
+        <br>
+
+        <!-- Price -->
+        <p class="price">
+          Price:
+          <span>₹ <%= listing.price.toLocaleString("en-IN") %></span>
+        </p>
+
+        <br>
+
+        <!-- 🔥 Contact -->
+        <div class="contact">
+          <p>
+            <strong>Contact Seller: </strong>+91
+            <%= listing.owner.phone %>
+          </p>
+        </div>
+
+        <a href="https://wa.me/91<%= listing.owner.phone %>" target="_blank" class="whatsapp-btn">
+
+          <i class="fa-brands fa-whatsapp"></i>
+          Chat on WhatsApp
+
+        </a>
+
+      </div>
+
+      <!-- Edit/Delete -->
+      <% if(currUser && currUser.id==listing.owner._id.toString()){ %>
+        <div class="editDelete">
+
+          <form method="GET" action="/listings/<%= listing._id %>/edit">
+            <button class="edit-btn">
+              <i class="fa-solid fa-pen-to-square"></i> Edit
+            </button>
+          </form>
+
+          <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE"
+            onsubmit="return confirm('Do you want to delete?');">
+            <button class="delete-btn">
+              <i class="fa-solid fa-trash"></i> Delete
+            </button>
+          </form>
+
+        </div>
+        <% } %>
+
+    </div>
+
+  </div>
