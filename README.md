@@ -7,7 +7,7 @@ WCE Marketplace is a full-stack web application built using Node.js, Express, an
 ### Core Technologies
 - **Node.js**: JavaScript runtime environment.
 - **Express.js**: Fast, unopinionated, minimalist web framework for Node.js.
-- **MongoDB**: NoSQL database for storing application data.
+- **MongoDB**: NoSQL database for storing application data through clusters.
 - **Mongoose**: Elegant MongoDB object modeling for Node.js.
 
 ### Frontend & Views
